@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": false,
+    "target": "es6",
+    "allowJs": true,
+    "declaration": false,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
