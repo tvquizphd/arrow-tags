@@ -15,7 +15,7 @@ const pointToValue = (callers, fn) => {
 }
 
 const pointToArray = (callers, fn) => {
-  const val = pointToValue(callers, fn());
+  const val = pointToValue(callers, fn);
   return isA(val) ? val : [];
 }
 
