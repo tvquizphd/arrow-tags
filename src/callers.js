@@ -1,4 +1,5 @@
 import { mergeChildren } from "./children.js";
+import { isFn } from "./pointers.js";
 
 const toAtt = (tag, fns) => {
   const entries = Object.entries(fns);
@@ -15,9 +16,23 @@ const toAtt = (tag, fns) => {
   return [pads, ...Object.values(fns)];
 }
 
+const parseFns = (fns) => {
+  const { html, key, ...attr } = fns;
+  if (!isFn(html) || key === undefined) {
+    return { attr, modify: (...a) => a };
+  }
+  const modify = (...args) => {
+    const v = html(...args);
+    if (!isFn(v.key)) return v;
+    return v.key(`${key}`);
+  }
+  return { attr, modify };
+}
+
 const CALLERS = {
   asArrowAttributer: (tag, children, fns={}) => {
-    const [pads, ...vals] = toAtt(tag, fns);
+    const { attr, modify } = parseFns(fns);
+    const [pads, ...vals] = toAtt(tag, attr);
     const child_pads = [];
     // Insert child templates
     children.forEach(child => {
@@ -30,7 +45,7 @@ const CALLERS = {
     const post = `</${tag}>`;
     pads.push(...mergeChildren(child_pads, pre, post));
     // Return both static and dynamic content
-    return [pads, ...vals];
+    return modify(pads, ...vals);
   }
 }
 

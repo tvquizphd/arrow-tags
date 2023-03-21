@@ -1,6 +1,5 @@
-import { pointToValue } from "./pointers.js";
+import { isA, pointToValue } from "./pointers.js";
 
-const isA = v => Array.isArray(v);
 const isP = v => typeof v === 'string';
 const isPad = v => isA(v) && v.every(isP);
 const isChild = v => isA(v) && !isPad(v[0]);

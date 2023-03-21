@@ -19,4 +19,4 @@ const pointToArray = (callers, fn) => {
   return isA(val) ? val : [];
 }
 
-export { pointToValue, pointToArray };
+export { isFn, isA, pointToValue, pointToArray };
