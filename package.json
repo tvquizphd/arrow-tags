@@ -2,13 +2,16 @@
   "name": "arrow-tags",
   "version": "1.0.0-beta.1",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
+    "build:publish": "pnpm build && pnpm publish",
     "build": "tsup src/index.js --format cjs,esm --dts --clean --target=chrome51,firefox54,safari12"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "tsup": "^6.7.0",
     "typescript": "^5.0.2"
