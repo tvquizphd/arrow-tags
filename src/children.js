@@ -18,7 +18,7 @@ const toChildren = (callers, args) => {
 const interlace = ([...p1], p2, i) => {
   const [ pre, post ] = [...p1].splice(i, 2);
   const patch = mergeChildren(p2, pre, post);
-  p1.splice(i, patch.length, ...patch);
+  p1.splice(i, 2, ...patch);
   return p1;
 }
 
