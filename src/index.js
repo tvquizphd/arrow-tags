@@ -2,6 +2,23 @@ import { CALLERS } from './callers.js';
 import { toChildren } from './children.js';
 import { pointToArray } from './pointers.js';
 
+const TAGS = [
+  'A', 'Abbr', 'Acronym', 'Address', 'Applet', 'Area', 'Article', 'Aside', 'Audio',
+  'B', 'Base', 'Bdi', 'Bdo', 'Bgsound', 'Big', 'Blink', 'Blockquote', 'Body', 'Br',
+  'Button', 'Canvas', 'Caption', 'Center', 'Cite', 'Code', 'Col', 'Colgroup', 'Content',
+  'Data', 'Datalist', 'Dd', 'Del', 'Details', 'Dfn', 'Dialog', 'Dir', 'Div', 'Dl', 'Dt',
+  'Em', 'Embed', 'Fieldset', 'Figcaption', 'Figure', 'Font', 'Footer', 'Form', 'Frame',
+  'Frameset', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'Head', 'Header', 'Hr', 'I', 'Iframe',
+  'Image', 'Img', 'Input', 'Ins', 'Kbd', 'Keygen', 'Label', 'Legend', 'Li', 'Link',
+  'Main', 'Map', 'Mark', 'Marquee', 'Menu', 'Menuitem', 'Meta', 'Meter', 'Nav', 'Nobr',
+  'Noembed', 'Noframes', 'Noscript', 'Object', 'Ol', 'Optgroup', 'Option', 'Output',
+  'P', 'Param', 'Picture', 'Plaintext', 'Portal', 'Pre', 'Progress', 'Q', 'Rb', 'Rp',
+  'Rt', 'Rtc', 'Ruby', 'S', 'Samp', 'Script', 'Section', 'Select', 'Shadow', 'Slot',
+  'Small', 'Source', 'Spacer', 'Span', 'Strike', 'Strong', 'Style', 'Sub', 'Summary',
+  'Sup', 'Svg', 'Table', 'Tbody', 'Td', 'Template', 'Textarea', 'Tfoot', 'Th', 'Thead',
+  'Time', 'Title', 'Tr', 'Track', 'Tt', 'U', 'Ul', 'Var', 'Video', 'Wbr', 'Xmp'
+];
+
 const switchValue = data => {
   return v => {
     switch(typeof v) {
@@ -28,7 +45,7 @@ const render = (callers) => {
   }
 }
 
-const toArrowTags = (callers) => {
+const toArrowTags = (callers, tags) => {
   const asArrowTag = (tag) => {
     const asArrowComponent = (...args) => {
       // Insert own attributes and children
@@ -37,15 +54,16 @@ const toArrowTags = (callers) => {
     }
     return asArrowComponent;
   }
+  const templates = Object.fromEntries(tags.map(tag => {
+    return [tag, asArrowTag(tag.toLowerCase())]
+  }));
   return {
+    ...templates,
     render: render(callers),
     _: (pads, ...fns) => [pads, ...fns],
-    Div: asArrowTag('div'),
-    Em: asArrowTag('em'),
-    A: asArrowTag('a'),
   }
 }
 
-const ArrowTags = toArrowTags(CALLERS);
+const ArrowTags = toArrowTags(CALLERS, TAGS);
 
 export default ArrowTags;
