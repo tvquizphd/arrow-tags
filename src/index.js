@@ -23,7 +23,7 @@ const switchValue = data => {
   return v => {
     switch(typeof v) {
       case 'function':
-        return v.bind(null, data);
+        return (...a) => v(data, ...a);
       case 'number':
         return () => v.parseInt(10);
       case 'string':
