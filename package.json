@@ -1,13 +1,14 @@
 {
   "name": "arrow-tags",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
+    "doc": "typedoc src/index.ts",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "build:publish": "pnpm build && pnpm publish",
+    "build:publish": "pnpm lint && pnpm doc && pnpm build && pnpm publish",
     "develop": "tsup src/index.ts --watch --format cjs,esm --dts --clean --target=esnext",
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --target=chrome51,firefox54,safari12"
   },
