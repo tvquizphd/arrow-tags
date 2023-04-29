@@ -13,8 +13,16 @@
     "build": "tsup src/index.ts --format cjs,esm --dts --clean --target=chrome51,firefox54,safari12"
   },
   "keywords": [],
-  "author": "",
+  "author": "TVQuizPhD",
   "license": "MIT",
+  "homepage": "https://tvquizphd.github.io/arrow-tags/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tvquizphd/arrow-tags.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tvquizphd/arrow-tags/issues"
+  },
   "devDependencies": {
     "tslint": "^6.1.3",
     "tsup": "^6.7.0",

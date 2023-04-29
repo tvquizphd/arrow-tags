@@ -1,6 +1,6 @@
 # Arrow Tags
 
-Tags for [ArrowJS](https://www.arrow-js.com/) without HTML syntax. This allows a convenient way to pass multiple HTML attributes, and use reactive data directly within the arrow functions. Read [the documentation for arrowTags](https://tvquizphd.github.io/arrow-tags/functions/arrowTags.html). Use arrowTags responsibly with the [valid elements](https://www.w3schools.com/tags/ref_html_dtd.asp) for your HTML or [custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements).
+Tags for [ArrowJS](https://www.arrow-js.com/) without HTML syntax. This allows a convenient way to pass multiple HTML attributes, and use reactive data directly within the arrow functions. Read [the documentation for arrowTags](https://tvquizphd.github.io/arrow-tags/functions/arrowTags.html). Use arrowTags responsibly with the [valid elements](https://www.w3schools.com/tags/ref_html_dtd.asp) for your HTML or [custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements). [Install here](https://tvquizphd.github.io/arrow-tags/#install).
 
 ```js
 import { reactive, html } from '@arrow-js/core';
@@ -25,11 +25,24 @@ html`<button style="color: blue;" @click="${() => data.i += 1}">
 </button>`(el);
 ```
 
-## Dependencies 
+## Install
 
-```js
+This installation assumes `pnpm` and `node 18` dependencies.
+
+```bash
+pnpm install @arrow-js/core
+pnpm install arrow-tags
+```
+
+### Dependencies 
+
+Install [nvm](https://github.com/nvm-sh/nvm) and [pnpm](https://pnpm.io/installation).
+
+```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+nvm install 18
+nvm use 18
 ```
 
 ## Basic Example

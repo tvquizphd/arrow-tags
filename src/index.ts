@@ -9,13 +9,13 @@ type RenderHTML = (
 type ArrowTags = (
   (html: ArrowFunction) => Record<string, Tag>
 );
+type ArrowAttributes = (
+  (tag: string, att: Data) => Children
+);
 export type Properties = Record<string, Content> & {
   data?: Data,
   key?: string
 };
-export type ArrowAttributes = (
-  (tag: string, att: Data) => Children
-);
 export type Content = (
   string | ((data: Data) => string)
 );
@@ -39,7 +39,7 @@ export type Tag = (
  *
  * @example
  *
- * Format properties for to ArrowJS 
+ * Format properties for to ArrowJS
  *
  * ```
  * import { html } from '@arrow-js/core';
