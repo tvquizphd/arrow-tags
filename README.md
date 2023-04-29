@@ -1,6 +1,6 @@
 # Arrow Tags
 
-Tags for [ArrowJS](https://www.arrow-js.com/) without HTML syntax. This allows a convenient way to pass multiple HTML attributes, and use reactive data directly within the arrow functions.
+Tags for [ArrowJS](https://www.arrow-js.com/) without HTML syntax. This allows a convenient way to pass multiple HTML attributes, and use reactive data directly within the arrow functions. Read [the documentation for arrowTags](https://tvquizphd.github.io/arrow-tags/functions/arrowTags.html). Use arrowTags responsibly with the [valid elements](https://www.w3schools.com/tags/ref_html_dtd.asp) for your HTML or [custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements).
 
 ```js
 import { reactive, html } from '@arrow-js/core';
